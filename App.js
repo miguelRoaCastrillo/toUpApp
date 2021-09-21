@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomePage } from './components/views/HomePage';
+import { Searching } from './components/views/Searching';
+import { Login } from './components/views/Login';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-          <Text>Este es el proyecto de simulación</Text>
-          <StatusBar style="auto" />
-      </View>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="HomePage" component={ HomePage } />
+        <Stack.Screen name="Searching" component={ Searching } />
+        <Stack.Screen name="Login" component={ Login } />
+      </Stack.Navigator>
     </NavigationContainer>
-
   );
 }
 
