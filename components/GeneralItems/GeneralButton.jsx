@@ -24,13 +24,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3,
-        backgroundColor: '#03A1BD',
-        margin: 'auto',
-        width: 'auto',        
+        borderRadius: 4,                
+        backgroundColor: '#03A1BD',                
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 15 
     },
     textButton:{
         color: 'white',
