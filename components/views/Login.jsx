@@ -28,7 +28,8 @@ export const Login = ({ navigation }) => {
             if( usernameRequest === usrtext && userPassRequest === pass ){
                 console.log("El usuario puede pasar");
                 setInvalidPass(false);
-                navigation.navigate('Searching');
+
+                navigation.navigate('IngresaStartUp');
             }else{
                 console.log("El usuario no puede pasar"); 
                 setInvalidPass(true);
@@ -41,11 +42,6 @@ export const Login = ({ navigation }) => {
 
     return(
         <View style={ styles.viewStyle }>
-            <Text
-                style={{color: "red", textAlign: "center"}}                
-            >
-
-            </Text>
             <View style={ styles.LogoContainer }>
                 <Image             
                     source={ require('../../assets/ToUppLogoweb.png') }
@@ -108,7 +104,9 @@ const styles = StyleSheet.create({
     LogoContainer: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 15,
+        marginBottom: 15
     },
     Logo: {
         width: 117,        

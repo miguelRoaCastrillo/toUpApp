@@ -3,7 +3,15 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { GeneralButton } from '../GeneralItems/GeneralButton';
 import { User } from '../GeneralItems/User';
 
-export const Results = ({ navigation }) => {
+export const Results = ({ navigation, route }) => {
+
+    const { tema, nombreStartUp } = route.params;
+
+    React.useEffect(()=>{
+        console.log( "El nombre del proyecto es: " + nombreStartUp )
+        console.log( "El tema que se está buscando es: " + tema )
+    },[])
+
     return(
         <>
             <View style={ styles.viewStyle }>
