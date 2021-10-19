@@ -9,6 +9,7 @@ export const IngresaStartUp = ({ navigation }) => {
     const [ nombreStartUp, onChangeNombreStartUp ] = React.useState("");
     const [ temasSelector, setTemasSelector ] = React.useState([]);
     const [ tema, onChangeTema ] = React.useState("");
+    const [ desc, onChangeDesc ] = React.useState("");
 
     React.useEffect(()=>{
         buscarTemas()
@@ -70,24 +71,35 @@ export const IngresaStartUp = ({ navigation }) => {
                         selectedValue={ tema }
                         style={ styles.InputPicker }
                         onValueChange={( temaSeleccionado ) => { onChangeTema( temaSeleccionado ) } }                        
-                    >                        
+                    >        
+                        <Picker.Item label="Elija un tema para el proyecto " value=""/>                
                         {temasSelector != undefined || temasSelector != null ?                          
                                 temasSelector.map(( item, index ) => {
-                                    return <Picker.Item label={ item.tem_nombre } value={ item.tem_nombre } key={ index }/>
+                                    return <Picker.Item label={ item.tem_nombre } value={ item.tem_id } key={ index }/>
                                 })                                                                                
                             :
                                 <Picker.Item label="No carga datos" value="No carga datos" />
                         }  
-                    </Picker>
-                </View>                
+                    </Picker>                    
+                </View> 
+                {/*Nombre*/}
+                <TextInput
+                    style={ styles.Input }
+                    onChangeText={ onChangeDesc }
+                    value={ desc }
+                    placeholder={ "Ingrese una descripcion corta" }
+                />               
             </View>
             <View style={ styles.buttonContainer }>
-                <GeneralButton                
+                <Pressable
+                    style={ styles.Button }                                    
                     text={ 'Buscar' }
                     onPress={()=>{
-                        navigation.navigate('Results', { tema, nombreStartUp });
+                        navigation.navigate('Results', { tema, nombreStartUp, desc });
                     }}
-                />
+                >
+                    <Text style={{textAlign: 'center', color: 'white'}}>Buscar empleados</Text>
+                </Pressable>
             </View>
         </View>
 
@@ -139,8 +151,25 @@ const styles = StyleSheet.create({
         width: '90%',
         backgroundColor: '#ededed'     
     },
+    buttonContainer: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: 10,
+        marginBottom: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },  
     Button: {    
+        height: 50,        
+        width: '45%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#03A1BD',        
         marginTop: 5,
         marginBottom: 5,
+        borderRadius: 10
     },
 });
